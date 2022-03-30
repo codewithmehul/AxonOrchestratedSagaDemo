@@ -8,6 +8,7 @@ import com.example.events.*;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.CommandCallback;
 import org.axonframework.commandhandling.CommandMessage;
+import org.axonframework.commandhandling.CommandResultMessage;
 import org.axonframework.commandhandling.callbacks.LoggingCallback;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.modelling.saga.EndSaga;
@@ -38,14 +39,15 @@ public class MoneyTransferSaga {
         SagaLifecycle.associateWith("transactionId", transferId);
         commandGateway.send(new WithdrawMoneyCommand(event.getSourceAccount(), transferId, event.getAmount()),
                 new CommandCallback<WithdrawMoneyCommand, Object>() {
+
                     @Override
-                    public void onSuccess(CommandMessage<? extends WithdrawMoneyCommand> commandMessage, Object result) {
+                    public void onResult(CommandMessage<? extends WithdrawMoneyCommand> commandMessage, CommandResultMessage<? extends Object> result) {
 
                     }
 
                     @Override
                     public void onFailure(CommandMessage<? extends WithdrawMoneyCommand> commandMessage, Throwable cause) {
-                        commandGateway.send(new CancelMoneyTransferCommand(event.getTransferId()))
+                        commandGateway.send(new CancelMoneyTransferCommand(event.getTransferId()));
                     }
                 });
     }
@@ -69,10 +71,9 @@ public class MoneyTransferSaga {
 
     @SagaEventHandler(associationProperty = "transferId")
     public void on(MoneyTransferCancelledEvent event) {
+
         end();
     }
 
-    }
-
-
 }
+

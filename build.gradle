@@ -13,6 +13,7 @@ dependencies {
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.5.7'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jdbc', version: '2.5.7'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-cassandra', version: '2.5.7'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.5.7'
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.27'
     implementation group: 'com.datastax.cassandra', name: 'cassandra-driver-core', version: '4.0.0'
 

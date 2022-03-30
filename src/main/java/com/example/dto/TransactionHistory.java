@@ -21,4 +21,13 @@ public class TransactionHistory {
     private String transactionId;
     private Integer amount;
 
+    public TransactionHistory(String accountId, String transactionId, Integer amount) {
+        this.accountId = accountId;
+        this.transactionId = transactionId;
+        this.amount = amount;
+    }
+
+    public TransactionHistory(String accountId) {
+        this.accountId = accountId;
+    }
 }

@@ -3,19 +3,18 @@ package com.example.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.cassandra.core.mapping.Column;
+import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.mapping.Table;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
+@Table
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class AccountBalance {
-    @Entity
-    @Data
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class AccountBalance {
-        @Id
+        @PrimaryKey("accountid")
         private String accountId;
-        private int balance;
 
-    }
+        @Column("balance")
+        private int balance;
 }
