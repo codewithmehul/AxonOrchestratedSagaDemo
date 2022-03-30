@@ -45,10 +45,11 @@ public class MoneyTransferSaga {
 
                     }
 
+/*
                     @Override
                     public void onFailure(CommandMessage<? extends WithdrawMoneyCommand> commandMessage, Throwable cause) {
                         commandGateway.send(new CancelMoneyTransferCommand(event.getTransferId()));
-                    }
+                    } */
                 });
     }
 
@@ -60,7 +61,7 @@ public class MoneyTransferSaga {
 
     @SagaEventHandler(associationProperty = "transactionId")
     public void on(MoneyDepositedEvent event) {
-        commandGateway.send(new CompleteMoneyTransferCommand(transferId),
+        commandGateway.send(new CompleteMoneyTransferCommand(this.transferId),
                 LoggingCallback.INSTANCE);
     }
 

@@ -15,8 +15,5 @@ public class CompleteMoneyTransferCommand {
     @TargetAggregateIdentifier
     private String transferId;
 
-    private String sourceAccount;
-    private String targetAccount;
-    private Integer amount;
 
 }

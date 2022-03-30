@@ -23,12 +23,13 @@ public class LoggingCallback<C, R> implements CommandCallback<C, R> {
     }
 */
    // @Override
+    /*
     public void onFailure(CommandMessage<? extends C> commandMessage, Throwable cause) {
         cause.printStackTrace();
         logger.info("Command failed: {} -> {}", commandMessage.getPayloadType().getSimpleName(),
                 cause.getClass().getSimpleName());
     }
-
+*/
     @Override
     public void onResult(CommandMessage<? extends C> commandMessage, CommandResultMessage<? extends R> commandResultMessage) {
 
